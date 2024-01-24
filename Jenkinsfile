@@ -15,8 +15,8 @@ pipeline {
             steps {
                 sshagent(['tomcat']) {
                 sh 'ssh -o StrictHostKeyChecking=no ubuntu@107.22.107.80'
-                sh 'rm -rf /usr/local/tomcat/webapps/*'
-                sh 'scp /var/lib/jenkins/workspace/devsops-ci/target/vprofile-v2.war ubuntu@107.22.107.80:/usr/local/tomcat/webapps/ROOT.war '
+                sh 'rm -rf /opt/tomcat/webapps/*'
+                sh 'scp /var/lib/jenkins/workspace/devsops-ci/target/vprofile-v2.war ubuntu@107.22.107.80:/opt/tomcat/webapps/ROOT.war'
                 }
             }
         }
