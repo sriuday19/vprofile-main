@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 services:
   vprodb:
     build:
@@ -6,11 +6,11 @@ services:
     image: sriuday19/vprodb
     container_name: vprodb
     ports:
-      - "3306:3306"
+      - "33060:33060"
     volumes:
       - vprodbdata:/var/lib/mysql
     environment:
-      - MYSQLROOT_PASSWORD=vprodbpass
+      -  MYSQL_ROOT_PASSWORD=vprodbpass
 
 
   #memcached
