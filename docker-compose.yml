@@ -3,7 +3,7 @@ services:
   vprodb:
     build:
       context: ./Dockerfiles/db
-    image: 
+    image: sriuday19/vprodb
     container_name: vprodb
     ports:
       - "3306:3306"
@@ -20,8 +20,8 @@ services:
       - "11211:11211"
 
   #Rabbitmq
-  vprorq:
-    image: 
+  vprorq: 
+    image: rabbitmq
     ports:
       - "5672:5672"
     environment:
@@ -30,7 +30,7 @@ services:
 
   #Tomcatapp
   vproapp:
-    image: 
+    image: sriuday19/vproapp
     build:
       context: ./Dockerfiles/app
     container_name: vproapp
@@ -41,7 +41,7 @@ services:
 
   #Nginx
   vproweb:
-    image: 
+    image: sriuday19/vproweb
     build:
        context: ./Dockerfiles/Web
     container_name: vproweb
