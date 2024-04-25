@@ -1,4 +1,3 @@
-version: '3.9'
 services:
   vprodb:
     build:
@@ -6,24 +5,29 @@ services:
     image: sriuday19/vprodb
     container_name: vprodb
     ports:
-      - "33060:33060"
+      - "3306:3306"
     volumes:
       - vprodbdata:/var/lib/mysql
     environment:
-      -  MYSQL_ROOT_PASSWORD=vprodbpass
+      - MYSQL_ROOT_PASSWORD=vprodbpass
+      - MYSQL_DATABASE=accounts
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
 
 
   #memcached
-  vpromem:
+  vprocache01:
     image: memcached
     ports:
       - "11211:11211"
 
   #Rabbitmq
-  vprorq: 
+  vpromq01: 
     image: rabbitmq
     ports:
-      - "5672:5672"
+      - "15672:15672"
     environment:
       - RABBITMQ_DEFAULT_USER=test
       - RABBITMQ_DEFAULT_PASS=test
@@ -38,6 +42,9 @@ services:
       - "8080:8080"
     volumes:
       - vproappdata:/usr/local/tomcat/webapps
+    depends_on:
+      vprodb:
+         condition: service_healthy
 
   #Nginx
   vproweb:
