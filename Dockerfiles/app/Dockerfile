@@ -3,7 +3,7 @@ LABEL "Author"="uday"
 LABEL "project"="vprofile"
 WORKDIR /vprofile
 RUN apt update && apt install maven -y
-RUN git clone https://github.com/sriuday19/vprofile-main.git
+RUN git clone -b Docker https://github.com/sriuday19/vprofile-main.git
 RUN cd /vprofile/vprofile-main && mvn install
 
 
