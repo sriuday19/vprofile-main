@@ -11,10 +11,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=vprodbpass
       - MYSQL_DATABASE=accounts
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 10
 
 
   #memcached
@@ -27,7 +23,7 @@ services:
   vpromq01: 
     image: rabbitmq
     ports:
-      - "15672:15672"
+      - "5672:5672"
     environment:
       - RABBITMQ_DEFAULT_USER=test
       - RABBITMQ_DEFAULT_PASS=test
@@ -42,9 +38,12 @@ services:
       - "8080:8080"
     volumes:
       - vproappdata:/usr/local/tomcat/webapps
+    healthcheck:
+      test: ["echo", "Hello"]
+      timeout: 30s
+      retries: 10
     depends_on:
-      vprodb:
-         condition: service_healthy
+      - vprodb
 
   #Nginx
   vproweb:
@@ -54,6 +53,8 @@ services:
     container_name: vproweb
     ports:
       - "80:80"
+    depends_on:
+      - vproapp
 
 volumes:
    vprodbdata: {}
