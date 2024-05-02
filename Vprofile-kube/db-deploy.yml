@@ -31,8 +31,8 @@ spec:
           - name: MYSQL_DATABASE
             value: accounts
         volumeMounts:
-          mountPath: /var/lib/mysql
-          name: db-data
+          - mountPath: /var/lib/mysql
+            name: db-data
       volumes:
         - name: db-data
           awsElasticBlockStore:
