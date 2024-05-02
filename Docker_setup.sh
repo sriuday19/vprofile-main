@@ -18,4 +18,4 @@ curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compo
 chmod +x /usr/local/bin/docker-compose
 
 #Adding used to the Docker group
-sudo usermod -a -G docker ubuntu
+usermod -a -G docker ubuntu
