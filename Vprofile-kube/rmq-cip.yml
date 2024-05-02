@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: vprodb-service-cip
+  name: rmq
 spec:
   selector:
-    app: vprodb
+    app: vprormq
   ports:
-  - port: 3306
-    targetPort: 3306
+  - port: 15672
+    targetPort: vprormq-port
     protocol: TCP
   type: ClusterIP

@@ -15,10 +15,10 @@ spec:
       containers:
       - name: vprodb
         image: sriuday19/vprodb
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+#        resources:
+#          limits:
+#            memory: "128Mi"
+#            cpu: "500m"
         ports:
         - name: vprodb-port
           containerPort: 3306
@@ -36,7 +36,7 @@ spec:
       volumes:
         - name: db-data
           awsElasticBlockStore:
-            volumeID: 
+            volumeID: vol-0e3caff9ba8b59b1c
             fsType: ext4
       nodeSelector:
         zone: us-east-1a  
