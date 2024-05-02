@@ -3,4 +3,8 @@ kops create cluster --name=vprofile.sriku.xyz \
 --node-count=2 --node-size=t3.small --master-size=t3.medium \
 --node-volume-size=8 --master-volume-size=8 --dns-zone=vprofile.sriku.xyz
 
+kops update cluster --name vprofile.sriku.xyz --state=s3://kops-vprofile1 --yes --admin
+
 kops validate cluster --name vprofile.sriku.xyz --state=s3://kops-vprofile1
+
+kops delete cluster --name vprofile.sriku.xyz --state=s3://kops-vprofile1 --yes
