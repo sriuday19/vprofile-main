@@ -32,7 +32,7 @@ spec:
       volumes:
         - name: db-data
           awsElasticBlockStore:
-            volumeID: vol-0e3caff9ba8b59b1c
+            volumeID: vol-05d6b29662e005fae
             fsType: ext4
       nodeSelector:
         zone: us-east-1a  
