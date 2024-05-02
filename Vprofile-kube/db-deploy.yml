@@ -30,7 +30,7 @@ spec:
                 key: MYSQL_ROOT_PASSWORD
           - name: MYSQL_DATABASE
             value: accounts
-        volumeMount:
+        volumeMounts:
           mountPath: /var/lib/mysql
           name: db-data
       volumes:
@@ -41,7 +41,7 @@ spec:
       nodeSelector:
         zone: us-east-1a  
       
-      initContainer:
+      initContainers:
       - name: busybox
         image: busybox:latest
         command: ['rm', '-rf', '/var/lib/mysql/lost+found']
