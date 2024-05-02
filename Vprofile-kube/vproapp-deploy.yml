@@ -29,5 +29,5 @@ spec:
 
       - name: init-mc
         image: busybox:latest
-        command: ['sh', '-c', "until nslookup vprodb; do echo waiting for vpromc; sleep 2; done"]
+        command: ['sh', '-c', "until nslookup vpromc; do echo waiting for vpromc; sleep 2; done"]
 
