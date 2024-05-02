@@ -14,11 +14,14 @@ spec:
       containers:
       - name: vproapp
         image: sriuday19/vproapp
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         ports:
         - name: vproapp-port
           containerPort: 8080
+      initContainers:
+        - name: init-db
+          image: busybox:latest
+          command: ['sh', '-c', "until nslookup vprodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
+        - name: init-mc
+          image: busybox:latest
+          command: ['sh', '-c', "until nslookup mc.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
 

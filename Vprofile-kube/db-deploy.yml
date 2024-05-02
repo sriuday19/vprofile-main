@@ -15,10 +15,6 @@ spec:
       containers:
       - name: vprodb
         image: sriuday19/vprodb
-#        resources:
-#          limits:
-#            memory: "128Mi"
-#            cpu: "500m"
         ports:
         - name: vprodb-port
           containerPort: 3306
